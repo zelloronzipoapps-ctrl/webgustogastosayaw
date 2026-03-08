@@ -1,0 +1,148 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4CAF50;
+}
+
+/* Video Container */
+#video-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.video-wrapper {
+    position: relative; /* CRITICAL: Keeps canvas inside the box */
+    width: 45%;
+    min-width: 300px;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden; /* Clips the canvas to the rounded corners */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover; /* Ensures video fills the wrapper */
+    transform: scaleX(-1); 
+}
+
+/* Hand Tracking Overlay Canvas */
+#overlayCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20; /* Higher than everything else in the wrapper */
+    pointer-events: none; 
+    transform: scaleX(-1);
+    /* border: 1px solid red;  <-- Uncomment this to see if the canvas is visible */
+}
+
+.label {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    z-index: 30; /* Higher than canvas */
+}
+
+/* Captions Area */
+#captions {
+    background: rgba(0,0,0,0.8);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #4CAF50;
+    min-height: 150px;
+}
+
+.caption-section {
+    margin-bottom: 15px;
+}
+
+.caption-label {
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#speechCaption {
+    color: #64B5F6;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#signCaption {
+    color: #FFB74D;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Control Buttons */
+#controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#roomId {
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 200px;
+    color: #333;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+#joinCall { background: #4CAF50; color: white; }
+#joinCall:hover { background: #45a049; }
+
+#endCall { background: #f44336; color: white; }
+#endCall:disabled { background: #666; cursor: not-allowed; }
+
+#toggleVoice { background: #2196F3; color: white; }
+#toggleVoice.active { background: #4CAF50; }
+
+#toggleSign { background: #FF9800; color: white; }
+#toggleSign.active { background: #4CAF50; }
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}

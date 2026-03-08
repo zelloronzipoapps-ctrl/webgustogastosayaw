@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTION</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CAPTION</h1>
+    
+    <div id="status" style="text-align:center; color: #4CAF50; margin-bottom: 10px; font-weight: bold;">
+        System Ready
+    </div>
+
+    <div id="video-container">
+        <div class="video-wrapper">
+            <video id="localVideo" autoplay muted playsinline></video>
+            <canvas id="overlayCanvas"></canvas> 
+            <span class="label">You</span>
+        </div>
+        <div class="video-wrapper">
+            <video id="remoteVideo" autoplay playsinline></video>
+            <span class="label">Remote</span>
+        </div>
+    </div>
+
+    <div id="captions">
+        <div class="caption-section">
+            <span class="caption-label">🗣️ SPEECH:</span>
+            <p id="speechCaption">Waiting for speech...</p>
+        </div>
+        
+        <div style="display: flex; gap: 10px; width: 100%;">
+            <div class="caption-section" style="flex: 1;">
+                <span class="caption-label">🤟 YOUR SIGNS (YOU):</span>
+                <p id="signCaption">Waiting for your signs...</p>
+            </div>
+            <div class="caption-section" style="flex: 1;">
+                <span class="caption-label">🤟 REMOTE SIGNS (THEM):</span>
+                <p id="remoteSignCaption">Waiting for remote signs...</p>
+            </div>
+        </div>
+
+        <div class="caption-section" style="background: #111; margin-top: 10px; border: 1px solid #333;">
+            <span class="caption-label" style="color: #888; font-size: 11px;">📏 POSITIONING (TECHNICAL FEEDBACK ONLY)</span>
+            <p id="distanceCaption" style="font-size: 14px; color: white;">Aligning camera...</p>
+        </div>
+    </div>
+
+    <div id="controls">
+        <input type="text" id="roomId" placeholder="Enter Room Name">
+        <button id="joinCall">📞 Join Call</button>
+        <button id="endCall" disabled>📴 End Call</button>
+        <button id="toggleVoice">🎤 Voice: OFF</button>
+        <button id="toggleSign">🤟 Sign & Distance: OFF</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@4.15.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl@4.15.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter@4.15.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection"></script>
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
